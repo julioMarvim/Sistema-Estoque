@@ -114,5 +114,18 @@ double atualizarEstoque(Produto estoqueProdutos[5], int idProduto, String nomePr
 	}
 }
 
+int sair(){
+	char sair;
+	
+	cout << "\n\nDESEJA CONTUNUAR NO SISTEMA? (s/n): ";
+	cin >> sair;
+	
+	if(sair == 's'){
+	return(1);
+	}else{
+		exit(0);
+	}
+}
+
 
 

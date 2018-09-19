@@ -15,7 +15,7 @@ int main() {
 	double valor;
 	String nome;
 	Produto produto;
-
+	estoque.ValorTotalVendido = 0;
 	do{
 		cout << "\n\n\n			      * * * * CADASTRO DE PRODUTOS * * * *\n\n\n";
 		cout << "\n Para CADASTRAR PRODUTO digite: 1";
@@ -45,7 +45,7 @@ int main() {
 				
 				cadastrarProduto(estoqueProdutos, produto, nome, qtd, contador, valor);
 				
-				cout << "\n\n	Produto cadastrado com sucesso!";
+				cout << "\n\n	Produto cadastrado com sucesso!\n";
 				while(opcao == 1){
 					contador++;
 					break;
@@ -87,8 +87,10 @@ int main() {
 							cout << "Informe a quantidade desejada: ";
 							cin >> qtdEscolhida;
 							cout <<"\n\n";
-								
+
 							venderProduto(estoqueProdutos, codEscolhido, qtdEscolhida, estoque);
+
+							
 							
 							cout << "\n\n	VENDA realizada com sucesso!";
 						
@@ -100,7 +102,6 @@ int main() {
 							cout << "\n\n\n-----------------------------------------------------------------------------------------------\n\n\n";
 							break;
 						}
-						
 						if(opcaoCadastro == 'a'){
 							cout << "Para ATUALIZAR algum dos porodutos encontrado informe o CODIGO: ";
 							cin >> codEscolhido;								
@@ -142,20 +143,12 @@ int main() {
 			case 4:
 				cout << "			      * * * * CADASTRO DE PRODUTOS * * * *\n\n\n";
 				cout << "----------------------------------------BALANCETE DE ATIVIDADES--------------------------------------\n\n\n";
-				int sair;
 					cout << "VALOR TOTAL VENDIDO: R$:"	<< estoque.ValorTotalVendido;		
 					cout <<"\n\n";
 					cout << "VALOR TOTAL EM ESTOQUE: R$:" << calculaValorTotal(estoqueProdutos, estoque);
 					
-					cout << "\n\nPara ENCERRA O SISTEMA digite 0: ";
-					cin >> sair;
+					sair();
 					
-					if(sair == 0){
-						cout << "			      * * * * OBRIGADO VOLTE SEMPRE!! * * * *\n\n\n";					
-									
-						cout << "\n\n\n-----------------------------------------------------------------------------------------------\n\n\n";
-						return 0;
-				   }
 				   break;
 			default:
                 cout << "Digite uma opcao valida\n";			

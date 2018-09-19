@@ -26,6 +26,7 @@ bool obterProdutoPorNome(Produto estoqueProdutos[5], String nome);
 double venderProduto(Produto estoqueProdutos[5], int idProduto, int qtdProduto, Estoque &estoque);
 double calculaValorTotalProduto(int qtdProduto, double valorUnitario, Estoque &estoque);
 double atualizarEstoque(Produto estoqueProdutos[5], int idProduto, String nomeProduto, int qtdProduto, double vlUnitario);
+int sair();
 
 
 #endif
