@@ -20,6 +20,7 @@ void cadastrarProduto(Produto estoqueProdutos[5], Produto &produto, String nomeP
 }
 
 void listarProdutos(Produto estoqueProdutos[5]){
+	
 	Estoque estoque;
 	for(int i=0;i<5;i++){
 		if(estoqueProdutos[i].IDProduto == i+1){
@@ -81,7 +82,7 @@ bool obterProdutoPorNome(Produto estoqueProdutos[5], String nome){
 		}
 }
 
-double venderProduto(Produto estoqueProdutos[5], int idProduto, int qtdProduto){
+double venderProduto(Produto estoqueProdutos[5], int idProduto, int qtdProduto, Estoque &estoque){
 	
 	double valorAtualizado;
 
@@ -89,6 +90,25 @@ double venderProduto(Produto estoqueProdutos[5], int idProduto, int qtdProduto){
 		
 		if(estoqueProdutos[i].IDProduto == idProduto && estoqueProdutos[i].QTDProduto > 0 ){
 			estoqueProdutos[i].QTDProduto = estoqueProdutos[i].QTDProduto - qtdProduto;
+			valorAtualizado = valorTotal - (estoqueProdutos[i].ValorUnitario * qtdProduto);
+			
+			// Atualiza o valor Total de vendas no estoque.
+			estoque.ValorTotalVendido = estoque.ValorTotalVendido + (valorTotal - valorAtualizado);
+		}
+	}
+}
+
+double atualizarEstoque(Produto estoqueProdutos[5], int idProduto, String nomeProduto, int qtdProduto, double vlUnitario){
+	
+	double valorAtualizado;
+
+	for(int i=0;i<5;i++){
+		
+		if(estoqueProdutos[i].IDProduto == idProduto){
+			strcpy(estoqueProdutos[i].NMProduto, nomeProduto);
+			estoqueProdutos[i].QTDProduto = qtdProduto;
+			estoqueProdutos[i].ValorUnitario = vlUnitario;
+
 			valorAtualizado = valorTotal - (estoqueProdutos[i].ValorUnitario * qtdProduto);
 		}
 	}
